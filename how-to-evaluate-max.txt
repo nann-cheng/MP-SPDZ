@@ -46,14 +46,14 @@ make -j16 semi2k-offline.x semi2k-party.x
 
 #Step 3.prepare offline phase data (2PC protocol)
 
-./semi2k-offline.x -p 0 max
-./semi2k-offline.x -p 1 max
+./semi2k-offline.x -h 45.63.6.86 -pn 8088 -p 0 max
+./semi2k-offline.x -h 45.63.6.86 -pn 8088 -p 1 max
 
 
 
 #Step 4.run the final program semi2k-party
-./semi2k-party.x -F -p 0 max
-./semi2k-party.x -F -p 1 max
+./semi2k-party.x -h 45.63.6.86 -pn 8088 -F -p 0 max
+./semi2k-party.x -h 45.63.6.86 -pn 8088 -F -p 1 max
 
 
 #benchmarking:
