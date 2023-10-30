@@ -38,6 +38,9 @@ make -j16 semi2k-offline.x semi2k-party.x
 ./semi2k-party.x -h 45.63.6.86 -pn 8088 -p 1 prepareData
 
 
+./semi2k-party.x -pn 8088 -p 0 prepareData
+./semi2k-party.x -pn 8088 -p 1 prepareData
+
 #Step 3.prepare max program
 
 0. Add max.mpc file (./compile.py -R 32 max)
