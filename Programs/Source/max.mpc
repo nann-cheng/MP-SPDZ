@@ -14,7 +14,7 @@ def find_maximum(lst):
         lst = max_values  # Replace lst with the larger elements for the next round
     return lst[0]  # The remaining element is the maximum
 
-VEC_LEN = 100000
+VEC_LEN = 1000000
 start,X_List = sint.read_from_file(0,VEC_LEN)
 c = find_maximum(X_List)
 print_ln("Target result is: %s", c.reveal())
