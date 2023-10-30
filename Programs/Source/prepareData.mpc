@@ -1,0 +1,15 @@
+import random
+
+VEC_LEN = 192
+
+def generate_unsigned_31bit_integer():
+    return random.randint(0, 2**31-1)
+
+shares=[]
+
+for i in range(VEC_LEN):
+    a=sint(generate_unsigned_31bit_integer())
+    b=sint(generate_unsigned_31bit_integer())
+    shares.append(a+b)
+
+sint.write_to_file(shares)

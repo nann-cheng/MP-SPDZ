@@ -1,0 +1,61 @@
+
+###Documents from MP-SPDZ######
+Arithmetic modulo 2^k
+
+./compile.py -R <integer bit length> <program>
+
+The length is communicated to the virtual machines and automatically used if supported. By default, they support bit lengths 64, 72, and 128. If another length is required, use MOD = -DRING_SIZE=<bit length> in CONFIG.mine.
+
+Classic daBits
+
+You can activate this by adding -X when compiling arithmetic circuits, that is ./compile.py -X [-F <integer bit length>] <program> for computation modulo a prime and ./compile.py -X -R <integer bit length> <program> for computation modulo 2^k.
+
+Internally, this uses daBits described by Rotaru and Wood, that is secret random bits shared in different domains. Some security models allow direct conversion of random bits from arithmetic to binary while others require inputs from several parties followed by computing XOR and checking for malicious security as described by Rotaru and Wood in Section 4.1.
+
+Extended daBits
+
+Extended daBits were introduced by Escudero et al.. You can activate them by using -Y instead of -X. Note that this also activates classic daBits when useful.
+###Documents from MP-SPDZ######
+
+
+
+#Step 0.adjust the ring parameters ued for the protocol semi2k-party (to CONFIG.mine) file in the root directory
+MOD = -DRING_SIZE=32
+
+#Step 1.prepare the selected MPC protocol semi2k-party
+
+make -j8 semi2k-offline.x
+make -j8 semi2k-party.x
+
+#Step 2.prepare input data
+
+0. add prepareData.mpc file ( ./compile.py -R 32 prepareData )
+1. 
+    ./semi2k-party.x -p 0 prepareData
+    ./semi2k-party.x -p 1 prepareData
+
+
+
+#Step 3.prepare max program
+
+0. Add max.mpc file (./compile.py -R 32 max)
+
+
+
+#Step 3.prepare offline phase data (2PC protocol)
+
+./semi2k-offline.x -p 0 max
+./semi2k-offline.x -p 1 max
+
+
+
+#Step 4.run the final program semi2k-party
+./semi2k-party.x -F -p 0 max
+./semi2k-party.x -F -p 1 max
+
+
+#benchmarking:
+change input parameter length
+
+------------------------------------------------------------------------------------------------
+

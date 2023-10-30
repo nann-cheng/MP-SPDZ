@@ -1,0 +1,20 @@
+program.use_edabit(True)
+program.use_split(2)
+
+def find_maximum(lst):
+    if not lst:
+        return None  # Return None if the list is empty
+    while len(lst) > 1:
+        max_values = []  # To store the larger elements from each pair
+        for i in range(0, len(lst), 2):
+            if i + 1 < len(lst):
+                max_values.append( (lst[i] < lst[i+1]).if_else(lst[i+1], lst[i])  )
+            else:
+                max_values.append(lst[i])  # If an unpaired element remains, keep it
+        lst = max_values  # Replace lst with the larger elements for the next round
+    return lst[0]  # The remaining element is the maximum
+
+VEC_LEN = 192
+start,X_List = sint.read_from_file(0,VEC_LEN)
+c = find_maximum(X_List)
+print_ln("Target result is: %s", c.reveal())
