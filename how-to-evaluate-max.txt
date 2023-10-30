@@ -34,6 +34,9 @@ make -j16 semi2k-offline.x semi2k-party.x
     ./semi2k-party.x --ip-file-name ipFile.txt -p 1 prepareData
 
 
+./semi2k-party.x -h 45.63.6.86 -pn 8088 -p 0 prepareData
+./semi2k-party.x -h 45.63.6.86 -pn 8088 -p 1 prepareData
+
 
 #Step 3.prepare max program
 
