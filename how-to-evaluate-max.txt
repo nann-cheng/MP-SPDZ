@@ -24,8 +24,7 @@ MOD = -DRING_SIZE=32
 
 #Step 1.prepare the selected MPC protocol semi2k-party
 
-make -j8 semi2k-offline.x
-make -j8 semi2k-party.x
+make -j16 semi2k-offline.x semi2k-party.x
 
 #Step 2.prepare input data
 
