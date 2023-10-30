@@ -1,6 +1,6 @@
 import random
 
-VEC_LEN = 100000
+VEC_LEN = 1000000
 
 def generate_unsigned_31bit_integer():
     return random.randint(0, 2**31-1)
