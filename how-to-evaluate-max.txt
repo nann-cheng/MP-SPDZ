@@ -30,8 +30,8 @@ make -j16 semi2k-offline.x semi2k-party.x
 
 0. add prepareData.mpc file ( ./compile.py -R 32 prepareData )
 1. 
-    ./semi2k-party.x -p 0 prepareData
-    ./semi2k-party.x -p 1 prepareData
+    ./semi2k-party.x --ip-file-name ipFile.txt -p 0 prepareData
+    ./semi2k-party.x --ip-file-name ipFile.txt -p 1 prepareData
 
 
 
